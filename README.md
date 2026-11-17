@@ -83,16 +83,26 @@ python manage.py migrate && python manage.py seed_portfolio
 ```
 Create an empty database first: `CREATE DATABASE portfolio CHARACTER SET utf8mb4;`
 
-## Deploy
+## Deploy on Render
 
-- **Frontend:** `npm run build`, then upload `frontend/dist` to Netlify, Vercel or GitHub Pages.
-  If the API lives on another domain, set `VITE_API_URL` (see `frontend/.env.example`) before building.
-- **Backend:** host on Render, Railway or PythonAnywhere. Set `DJANGO_DEBUG=0`, a real
-  `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS` and `CORS_ORIGINS` (your frontend URL).
+`render.yaml` in the project root describes everything Render needs: a Postgres database,
+the Django API (`portfolio-api`) and the React site (`portfolio-web`).
+
+1. Push this project to GitHub.
+2. In Render: **New → Blueprint**, pick your repository and click **Apply**.
+   Fill in the admin user values when asked (`DJANGO_SUPERUSER_USERNAME`, `_EMAIL`, `_PASSWORD`).
+3. When the first deploy finishes, copy the two URLs Render gives you, then set:
+   - on **portfolio-web**: `VITE_API_URL` = `https://<your-api>.onrender.com/api`
+   - on **portfolio-api**: `CORS_ORIGINS` = `https://<your-website>.onrender.com` (no trailing slash)
+4. Redeploy **portfolio-web** (Manual Deploy → Deploy latest commit) so the new API URL is built in.
+5. Open the website URL. The admin site is at `https://<your-api>.onrender.com/admin/`.
+
+Notes: free Render web services sleep after a period of inactivity, so the first request can take
+about a minute (the site still shows its built-in content meanwhile). Free Postgres databases may
+expire after a limited time, so check Render's current free-plan terms and upgrade or export your data if needed.
 
 ## Editing content
 
 Use the Django admin, or edit `backend/portfolio/management/commands/seed_portfolio.py` and
 re-run `python manage.py seed_portfolio`. Colours and fonts are the variables at the top of
 `frontend/src/styles/global.css`. To change the photo, replace `frontend/src/assets/images/profile.jpg`.
-# portfolio_updated

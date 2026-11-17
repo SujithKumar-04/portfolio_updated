@@ -7,7 +7,13 @@ from portfolio.models import Education, Experience, Profile, Project, SkillGroup
 class Command(BaseCommand):
     help = "Load Sujith Kumar Chepuri's portfolio content into the database."
 
+    def add_arguments(self, parser):
+        parser.add_argument("--if-empty", action="store_true", help="Do nothing if a profile already exists (safe for deploys).")
+
     def handle(self, *args, **options):
+        if options["if_empty"] and Profile.objects.exists():
+            self.stdout.write("Data already present, skipping seed.")
+            return
         for model in (Profile, SkillGroup, Experience, Project, Education):
             model.objects.all().delete()
 
