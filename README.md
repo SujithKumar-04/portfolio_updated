@@ -95,3 +95,4 @@ Create an empty database first: `CREATE DATABASE portfolio CHARACTER SET utf8mb4
 Use the Django admin, or edit `backend/portfolio/management/commands/seed_portfolio.py` and
 re-run `python manage.py seed_portfolio`. Colours and fonts are the variables at the top of
 `frontend/src/styles/global.css`. To change the photo, replace `frontend/src/assets/images/profile.jpg`.
+# portfolio_updated
