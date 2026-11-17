@@ -1,0 +1,8 @@
+.contact{background:#0f2a66;color:#fff;padding:72px 0 32px}
+.contact .soft{color:#c5d4f5}
+.contact-list li{margin-bottom:14px}
+.contact-list small{display:block;color:#9fb6ea}
+.contact-list a,.contact a{word-break:break-word}
+.contact .form-control{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff}
+.contact .form-control:focus{background:rgba(255,255,255,.14);border-color:#fff;box-shadow:none}
+.fine{margin:48px 0 0;color:#9fb6ea;font-size:.9rem}

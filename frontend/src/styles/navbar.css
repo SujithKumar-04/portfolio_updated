@@ -1,0 +1,4 @@
+.app-nav{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);top:env(safe-area-inset-top,0px)}
+.app-nav .navbar-brand{color:var(--ink);font-family:Manrope,sans-serif;font-size:1.05rem}
+.app-nav .nav-link{color:var(--mut);border-radius:8px;padding:7px 12px}
+.app-nav .nav-link:hover{background:var(--soft);color:var(--a)}

@@ -1,0 +1,7 @@
+/* Reduced-motion overrides. Imported last so they win. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-text,.hex-wrap,.hex.ghost{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .app-card,.btn,.hex.ring{transition:none}
+}
